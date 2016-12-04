@@ -7,5 +7,5 @@ element.innerHTML = 'Hello World!';
 //Move the image
 var img = document.getElementById('madi');
 img.onclick = function() {
-    img.style.marginleft = '160px';
+    img.style.marginleft = '100px';
 };
