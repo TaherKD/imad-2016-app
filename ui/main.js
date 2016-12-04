@@ -5,7 +5,7 @@ var element = document.getElementById('main-text');
 element.innerHTML = 'Hello World!';
 
 //Move the image
-var img = document.getElementById('dragoon');
+var img = document.getEmentById('dragoon');
 img.onclick = function () {
     img.style.marginleft = '160px';
 };
