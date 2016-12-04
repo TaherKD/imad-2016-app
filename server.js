@@ -6,19 +6,37 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var articleOne = {
-  title: 'Article One | Taher K D',
-  heading: 'Article One',
-  date: 'December 4, 2016',
-  content: `<p>
-                    A programmer, computer programmer, developer, dev, coder, or software engineer is a person who writes computer software. The term computer programmer can refer to a specialist in one area of computer programming or to a generalist who writes code for many kinds of software. 
-                </p>
-                <p>
-                    A programmer, computer programmer, developer, dev, coder, or software engineer is a person who writes computer software. The term computer programmer can refer to a specialist in one area of computer programming or to a generalist who writes code for many kinds of software. 
-                </p>
-                <p>
-                    A programmer, computer programmer, developer, dev, coder, or software engineer is a person who writes computer software. The term computer programmer can refer to a specialist in one area of computer programming or to a generalist who writes code for many kinds of software.
-                </p>`
+var articles = {
+    'article-one': {
+      title: 'Article One | Taher K D',
+      heading: 'Article One',
+      date: 'December 4, 2016',
+      content: `<p>
+                        A programmer, computer programmer, developer, dev, coder, or software engineer is a person who writes computer software. The term computer programmer can refer to a specialist in one area of computer programming or to a generalist who writes code for many kinds of software. 
+                    </p>
+                    <p>
+                        A programmer, computer programmer, developer, dev, coder, or software engineer is a person who writes computer software. The term computer programmer can refer to a specialist in one area of computer programming or to a generalist who writes code for many kinds of software. 
+                    </p>
+                    <p>
+                        A programmer, computer programmer, developer, dev, coder, or software engineer is a person who writes computer software. The term computer programmer can refer to a specialist in one area of computer programming or to a generalist who writes code for many kinds of software.
+                    </p>`
+    },
+    'article-two': {
+      title: 'Article Two | Taher K D',
+      heading: 'Article Two',
+      date: 'December 5, 2016',
+      content: `<p>
+                        A programmer, computer programmer, developer, dev, coder, or software engineer is a person who writes computer software. The term computer programmer can refer to a specialist in one area of computer programming or to a generalist who writes code for many kinds of software. 
+                    </p>`
+    },
+    'article-three': {
+      title: 'Article Three | Taher K D',
+      heading: 'Article Three',
+      date: 'December 6, 2016',
+      content: `<p>
+                        A programmer, computer programmer, developer, dev, coder, or software engineer is a person who writes computer software. The term computer programmer can refer to a specialist in one area of computer programming or to a generalist who writes code for many kinds of software. 
+                    </p>`
+    }
 };
 
 
@@ -62,17 +80,13 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function(req, res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+app.get('/:articleName', function(req, res){
+    //article == article-one
+    //articles[articleName] =={} content object for article one
+    var articleName = req.params.articleName;
+    res.send(createTemplate(articles[articleName]));
 });
 
-app.get('/article-two', function(req, res){
-    res.send(createTemplate(articleOne));
-});
-
-app.get('/article-three', function(req, res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
