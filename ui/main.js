@@ -6,6 +6,6 @@ element.innerHTML = 'Hello World!';
 
 //Move the image
 var img = document.getElementById('dragoon');
-img.onclick = function () {
+img.onclick = function() {
     img.style.marginleft = '160px';
 };
