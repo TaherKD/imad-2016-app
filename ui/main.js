@@ -17,13 +17,28 @@ img.onclick = function() {
     //img.style.marginLeft = '100px';
 };*/
 //Counter code
-var counter =0;
 var button = document.getElementById('counter');
 button.onclick = function(){
-    //make request to counter endpoint
+     
+    //create a request object
+    var request = new XMLHttpRequest();
+    
+    
     //capture response and store it in a variable
-    //render the variable in correct span
-    counter =counter + 1;
-    var span = document.getElementById('count');
+    request.onreadystatechange = function(){
+       if(request.readyState === XMLHttpRequest.DONE) {
+           //take some action
+           if(request.status === 200){
+               var counter = request.responeText;
+               var span = document.getElementById('count');
     span.innerHTML = counter.toString();
-}
+           }
+       }
+       //not done yet
+    };
+    
+    //make the request
+    request.open('GET','http://taherkd.imad.hasura-app.io', true);
+    request.send(null);
+
+};
