@@ -39,7 +39,6 @@ var articles = {
     }
 };
 
-
 function createTemplate (data) {
     var title = data.title;
     var heading = data.heading;
@@ -85,7 +84,6 @@ app.get('/counter', function (req, res) {
   counter = counter + 1;
   res.send(counter.toString());
 });
-
 
 app.get('/:articleName', function(req, res){
     //article == article-one
