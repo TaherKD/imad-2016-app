@@ -72,8 +72,4 @@ submit.onclick = function(){
     //make the request
     request.open('GET','http://taherkd.imad.hasura-app.io/submit-name?name=' + name, true);
     request.send(null);
-    
-    //make request to server and send a name
-    
-    
 }
